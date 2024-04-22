@@ -1,0 +1,101 @@
+ <!DOCTYPE html>
+ <html lang="en">
+<title>
+    textbox animation 2024
+</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<header>
+    
+    <script src="d3.v7.js"></script>
+</header>
+<body></body>
+<section class="section1">
+    <div>
+    <p>blue box</p>
+    </div>
+    </section>
+    <section class="section2">
+    <div>
+    <p>red box</p>
+    </div>
+    </section>
+    <script>
+    d3.select(".section1").transition()
+    .on("start", function repeat() {
+        d3.active(this)
+        .style("background-color", "blue")
+          .transition()
+          .duration(5000)
+          .style("background-color", "teal")
+          .transition()
+          .duration(3000)
+          .transition()
+            .on("start", repeat)
+            ;
+      }); // <-- A
+    d3.select(".section2").transition() // <-- B
+    .on("start", function repeat1() {
+        d3.active(this)
+          .style("background-color", "aqua")
+          .transition()
+          .duration(5000)
+          .style("background-color", "red")
+          .transition()
+          .duration(3000)
+          .transition()
+            .on("start", repeat1);
+      });
+
+    
+    </script>
+    <style>
+        .section1 {
+            padding: 15px;
+            border: 5px solid yellow;
+            background-color: blue;
+            float: left;
+            color: white;
+            font-size: x-large;
+            font-style: italic;
+            width: 90px;
+            height: 90px;
+            animation-name: colorchange2;
+            animation-duration: 5s; 
+            animation-delay: 2s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            
+           
+        }
+        @keyframes colorchange2 {
+            from {height: 90px; }
+            to {height: 270px; }
+        }
+        .section2 {
+            padding: 15px;
+            border: 5px solid green;
+            width: 90px;
+            height: 90px;
+            background-color: aqua; 
+            float:right;
+            color: white;
+            font-size: x-large;
+            font-style: italic;
+            animation-name: colorchange;
+            animation-duration: 5s; 
+            animation-delay: 2s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            
+           
+        }
+        @keyframes colorchange {
+            from {height: 90px; }
+            to {height: 270px; }
+        }
+
+    </style>
+    </html>
